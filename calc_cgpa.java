@@ -1,1 +1,1 @@
-Unknown tool: convert_code
+Error: OPENAI_API_KEY is not set on the Copilot MCP server.
