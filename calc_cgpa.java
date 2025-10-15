@@ -1,63 +1,69 @@
-Below is the Java equivalent of the provided C++ code. Note that Java does not support the `goto` statement, so I've replaced it with loops for handling repeated input prompts. Additionally, Java does not have a direct equivalent to `system("cls")`, so I've omitted that functionality.
-
-```java
 import java.util.Scanner;
 
 public class GPACalculator {
 
     public static void main(String[] args) {
+        clearScreen();
+        int input;
         Scanner scanner = new Scanner(System.in);
+        System.out.println("--------------------------------------------------------------------------");
+        System.out.println("                    GPA & CGPA Calculator (Developed by Nemo)             ");
+        System.out.println("--------------------------------------------------------------------------\n");
+        System.out.println("            MENU:");
+        System.out.println("                   1. Calculate GPA (Grade Point Average)");
+        System.out.println("                   2. Calculate CGPA (Cummulative Grade Point Average)");
+        System.out.println("                   3. Method that is applied here for calclating GPA & CGPA");
+        System.out.println("                   4. Exit Application");
+        System.out.println("--------------------------------------------------------------------------");
+        sub:
         while (true) {
-            System.out.println("--------------------------------------------------------------------------");
-            System.out.println("                    GPA & CGPA Calculator (Developed by Nemo)             ");
-            System.out.println("--------------------------------------------------------------------------\n");
-            System.out.println("            MENU:");
-            System.out.println("                   1. Calculate GPA (Grade Point Average)");
-            System.out.println("                   2. Calculate CGPA (Cummulative Grade Point Average)");
-            System.out.println("                   3. Method that is applied here for calculating GPA & CGPA");
-            System.out.println("                   4. Exit Application");
-            System.out.println("--------------------------------------------------------------------------");
             System.out.print("Enter your choice: ");
-            int input = scanner.nextInt();
-
+            input = scanner.nextInt();
             switch (input) {
                 case 1:
-                    calculateGPA(scanner);
+                    calculateGPA();
                     break;
                 case 2:
-                    calculateCGPA(scanner);
+                    calculateCGPA();
                     break;
                 case 3:
-                    method(scanner);
+                    method();
                     break;
                 case 4:
                     System.exit(0);
                     break;
                 default:
                     System.out.println("You have entered wrong input. Try again!\n");
+                    continue sub;
             }
         }
     }
 
-    public static void calculateGPA(Scanner scanner) {
+    public static void calculateGPA() {
+        clearScreen();
+        Scanner scanner = new Scanner(System.in);
         System.out.println("-------------- GPA Calculating -----------------");
-        System.out.print("How many subject's points do you want to calculate? : ");
+        System.out.print(" How many subject's points do you want to calculate? : ");
         int q = scanner.nextInt();
 
         float[] credit = new float[q];
         float[] point = new float[q];
 
+        System.out.println();
         for (int i = 0; i < q; i++) {
             System.out.print("Enter the credit for the subject " + (i + 1) + ": ");
             credit[i] = scanner.nextFloat();
+            System.out.println();
             System.out.print("Enter the point of the subject " + (i + 1) + ": ");
             point[i] = scanner.nextFloat();
-            System.out.println("-----------------------------------\n");
+            System.out.println("-----------------------------------\n\n");
         }
 
         float sum = 0;
+        float tot;
         for (int j = 0; j < q; j++) {
-            sum += credit[j] * point[j];
+            tot = credit[j] * point[j];
+            sum += tot;
         }
 
         float totCr = 0;
@@ -67,6 +73,7 @@ public class GPACalculator {
 
         System.out.println("\n\n\nTotal Points: " + sum + " . Total Credits: " + totCr + " .Total GPA: " + (sum / totCr) + " .");
 
+        sub:
         while (true) {
             System.out.println("\n\n\n1. Calculate Again");
             System.out.println("2. Go Back to Main Menu");
@@ -76,28 +83,31 @@ public class GPACalculator {
 
             switch (inmenu) {
                 case 1:
-                    calculateGPA(scanner);
-                    return;
+                    calculateGPA();
+                    break;
                 case 2:
-                    return;
+                    main(null);
+                    break;
                 case 3:
                     System.exit(0);
                 default:
                     System.out.println("\n\nYou have Entered Wrong Input! Please Choose Again!");
+                    continue sub;
             }
         }
     }
 
-    public static void calculateCGPA(Scanner scanner) {
+    public static void calculateCGPA() {
+        clearScreen();
+        Scanner scanner = new Scanner(System.in);
         System.out.println("-------------- CGPA Calculating -----------------\n\n");
-        System.out.print("How many semester results do you want input? : ");
+        System.out.print("How many semester results do you want input? :");
         int l = scanner.nextInt();
         System.out.println("\n\n");
-
         float[] semrs = new float[l];
 
         for (int i = 0; i < l; i++) {
-            System.out.print("Enter Semester " + (i + 1) + " Result(GPA): ");
+            System.out.print(" Enter Semester " + (i + 1) + " Result(GPA): ");
             semrs[i] = scanner.nextFloat();
             System.out.println("\n");
         }
@@ -109,6 +119,7 @@ public class GPACalculator {
 
         System.out.println("******** Your CGPA is " + (semtot / l) + " **********");
 
+        sub:
         while (true) {
             System.out.println("\n\n\n1. Calculate Again");
             System.out.println("2. Go Back to Main Menu");
@@ -118,24 +129,29 @@ public class GPACalculator {
 
             switch (inmenu) {
                 case 1:
-                    calculateCGPA(scanner);
-                    return;
+                    calculateCGPA();
+                    break;
                 case 2:
-                    return;
+                    main(null);
+                    break;
                 case 3:
                     System.exit(0);
                 default:
                     System.out.println("\n\nYou have Entered Wrong Input! Please Choose Again!");
+                    continue sub;
             }
         }
     }
 
-    public static void method(Scanner scanner) {
+    public static void method() {
+        clearScreen();
+        Scanner scanner = new Scanner(System.in);
         System.out.println("--------------- Method of Calculating GPA & CGPA ---------------\n\n");
-        System.out.println("GPA= Sum of (Credit*Point) / total of credits \n");
-        System.out.println("CGPA=  Sum of GPA / number of semesters ");
+        System.out.println(" GPA= Sum of (Credit*Point) / total of credits \n");
+        System.out.println(" CGPA=  Sum of GPA / number of semesters ");
         System.out.println("-----------------------------------------------------------------\n\n");
 
+        sub:
         while (true) {
             System.out.println("1. Go Back to Main Menu");
             System.out.println("2. Exit This App \n\n");
@@ -144,15 +160,19 @@ public class GPACalculator {
 
             switch (inmenu) {
                 case 1:
-                    return;
+                    main(null);
+                    break;
                 case 2:
                     System.exit(0);
                 default:
                     System.out.println("\n\nYou have Entered Wrong Input! Please Choose Again!");
+                    continue sub;
             }
         }
     }
-}
-```
 
-This Java program uses a `Scanner` for input and handles menu navigation using loops instead of `goto`. The `main` method is the entry point, and the program continues to run until the user chooses to exit.
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+}
