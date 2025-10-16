@@ -13,6 +13,20 @@ public class MathLibController {
         this.service = service;
     }
 
+    @PostMapping("/add")
+    public ResponseEntity<int> add(@RequestParam int a, @RequestParam int b) {
+        // TODO: map request parameters and call service
+        int result = service.add(a, b);
+        return ResponseEntity.ok(result);
+    }
+
+    @PostMapping("/subtract")
+    public ResponseEntity<int> subtract(@RequestParam int a, @RequestParam int b) {
+        // TODO: map request parameters and call service
+        int result = service.subtract(a, b);
+        return ResponseEntity.ok(result);
+    }
+
     @PostMapping("/multiply")
     public ResponseEntity<int> multiply(@RequestParam int a, @RequestParam int b) {
         // TODO: map request parameters and call service
