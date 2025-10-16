@@ -13,17 +13,17 @@ public class MathLibController {
         this.service = service;
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<int> add(@RequestParam int a, @RequestParam int b) {
+    @PostMapping("/multiply")
+    public ResponseEntity<int> multiply(@RequestParam int a, @RequestParam int b) {
         // TODO: map request parameters and call service
-        int result = service.add(a, b);
+        int result = service.multiply(a, b);
         return ResponseEntity.ok(result);
     }
 
-    @PostMapping("/subtract")
-    public ResponseEntity<int> subtract(@RequestParam int a, @RequestParam int b) {
+    @PostMapping("/divide")
+    public ResponseEntity<double> divide(@RequestParam int a, @RequestParam int b) {
         // TODO: map request parameters and call service
-        int result = service.subtract(a, b);
+        double result = service.divide(a, b);
         return ResponseEntity.ok(result);
     }
 
